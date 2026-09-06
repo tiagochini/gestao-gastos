@@ -1,4 +1,5 @@
 <script setup>
+import { icons } from '@/icons';
 import { Link, useForm, usePage } from '@inertiajs/vue3';
 import AppLayout from '@/Layouts/AppLayout.vue';
 
@@ -33,7 +34,7 @@ function submit() {
         <section class="panel user-panel">
             <div class="panel-title">
                 <span class="title-icon">
-                    <v-icon icon="mdi-account-edit-outline" size="22" />
+                    <v-icon :icon="icons.accountEditOutline" size="22" />
                 </span>
                 <h2>Dados do usuario</h2>
             </div>

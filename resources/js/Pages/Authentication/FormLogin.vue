@@ -1,4 +1,5 @@
 <script setup>
+import { icons } from '@/icons';
 import { useForm } from '@inertiajs/vue3';
 import { computed, ref } from 'vue';
 
@@ -64,7 +65,7 @@ function submit() {
                         :aria-label="showPassword ? 'Ocultar senha' : 'Mostrar senha'"
                         @click="showPassword = !showPassword"
                     >
-                        <v-icon :icon="showPassword ? 'mdi-eye-off-outline' : 'mdi-eye-outline'" />
+                        <v-icon :icon="showPassword ? icons.eyeOffOutline : icons.eyeOutline" />
                     </v-btn>
                 </template>
             </v-text-field>

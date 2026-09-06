@@ -1,4 +1,5 @@
 <script setup>
+import { icons } from '@/icons';
 import { useForm } from '@inertiajs/vue3';
 import AppLayout from '@/Layouts/AppLayout.vue';
 
@@ -66,7 +67,7 @@ function clearFilters() {
         <section class="panel filter-panel">
             <div class="panel-title">
                 <span class="title-icon">
-                    <v-icon icon="mdi-filter-outline" size="22" />
+                    <v-icon :icon="icons.filterOutline" size="22" />
                 </span>
                 <h2>Filtros</h2>
             </div>
@@ -142,7 +143,7 @@ function clearFilters() {
             <article class="panel table-panel">
                 <div class="panel-title table-title">
                     <span class="title-icon">
-                        <v-icon icon="mdi-tag-outline" size="22" />
+                        <v-icon :icon="icons.tagOutline" size="22" />
                     </span>
                     <h2>Por categoria</h2>
                 </div>
@@ -161,7 +162,7 @@ function clearFilters() {
                             <tr v-if="byCategory.length === 0">
                                 <td colspan="4" class="empty-cell">
                                     <div class="empty-state">
-                                        <v-icon icon="mdi-chart-box-outline" size="34" />
+                                        <v-icon :icon="icons.chartBoxOutline" size="34" />
                                         <strong>Nenhum dado encontrado</strong>
                                         <span>Ajuste os filtros ou cadastre novos lancamentos.</span>
                                     </div>
@@ -181,7 +182,7 @@ function clearFilters() {
             <article class="panel table-panel">
                 <div class="panel-title table-title">
                     <span class="title-icon">
-                        <v-icon icon="mdi-calendar-month-outline" size="22" />
+                        <v-icon :icon="icons.calendarMonthOutline" size="22" />
                     </span>
                     <h2>Por mes</h2>
                 </div>
@@ -200,7 +201,7 @@ function clearFilters() {
                             <tr v-if="byMonth.length === 0">
                                 <td colspan="4" class="empty-cell">
                                     <div class="empty-state">
-                                        <v-icon icon="mdi-calendar-search-outline" size="34" />
+                                        <v-icon :icon="icons.calendarSearchOutline" size="34" />
                                         <strong>Nenhum dado no periodo</strong>
                                         <span>Escolha outro intervalo para analisar.</span>
                                     </div>

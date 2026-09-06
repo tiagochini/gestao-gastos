@@ -1,5 +1,6 @@
 <script setup>
 
+import { icons } from '@/icons';
 import Guest from "@/Layouts/Guest.vue";
 import FormLogin from "@/Pages/Authentication/FormLogin.vue";
 </script>
@@ -13,7 +14,7 @@ import FormLogin from "@/Pages/Authentication/FormLogin.vue";
                         <v-col cols="12" sm="8" md="5" lg="4">
                             <div class="login-brand">
                                 <div class="brand-icon">
-                                    <v-icon icon="mdi-chart-box-outline" />
+                                    <v-icon :icon="icons.chartBoxOutline" />
                                 </div>
                                 <strong>Gestao de Gastos</strong>
                             </div>

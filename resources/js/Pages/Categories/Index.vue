@@ -1,4 +1,5 @@
 <script setup>
+import { icons } from '@/icons';
 import { useForm, usePage } from '@inertiajs/vue3';
 import AppLayout from '@/Layouts/AppLayout.vue';
 
@@ -54,7 +55,7 @@ function toggle(category) {
         <section class="panel category-panel">
             <div class="panel-title">
                 <span class="title-icon">
-                    <v-icon icon="mdi-tag-plus-outline" size="22" />
+                    <v-icon :icon="icons.tagPlusOutline" size="22" />
                 </span>
                 <h2>Nova categoria</h2>
             </div>
@@ -76,7 +77,7 @@ function toggle(category) {
                     :error-messages="form.errors.type"
                 />
                 <v-btn color="primary" type="submit" :loading="form.processing">
-                    <v-icon icon="mdi-plus" />
+                    <v-icon :icon="icons.plus" />
                     Adicionar
                 </v-btn>
             </form>
@@ -85,7 +86,7 @@ function toggle(category) {
         <section class="panel table-panel">
             <div class="panel-title table-title">
                 <span class="title-icon">
-                    <v-icon icon="mdi-tag-outline" size="22" />
+                    <v-icon :icon="icons.tagOutline" size="22" />
                 </span>
                 <h2>Categorias cadastradas</h2>
             </div>
@@ -104,7 +105,7 @@ function toggle(category) {
                         <tr v-if="categories.length === 0">
                             <td colspan="4" class="empty-cell">
                                 <div class="empty-state">
-                                    <v-icon icon="mdi-tag-plus-outline" size="34" />
+                                    <v-icon :icon="icons.tagPlusOutline" size="34" />
                                     <strong>Nenhuma categoria cadastrada</strong>
                                     <span>Crie categorias para classificar receitas e despesas.</span>
                                 </div>

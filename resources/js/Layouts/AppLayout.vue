@@ -1,4 +1,5 @@
 <script setup>
+import { icons } from '@/icons';
 import { Link, router, usePage } from '@inertiajs/vue3';
 import { computed } from 'vue';
 
@@ -17,14 +18,12 @@ const initials = computed(() => {
 });
 
 const menuItems = computed(() => [
-    { label: 'Dashboard', href: '/dashboard', icon: 'mdi-home-outline', active: page.url.startsWith('/dashboard') },
-    { label: 'Lancamentos', href: '/lancamentos', icon: 'mdi-file-document-outline', active: page.url.startsWith('/lancamentos') },
-    { label: 'Mensalidades', href: '/mensalidades', icon: 'mdi-account-cash-outline', active: page.url.startsWith('/mensalidades') },
-    { label: 'Categorias', href: '/categorias', icon: 'mdi-tag-outline', active: page.url.startsWith('/categorias') },
-    { label: 'Relatorios', href: '/relatorios', icon: 'mdi-chart-bar', active: page.url.startsWith('/relatorios') },
-    { label: 'Metas', href: '#', icon: 'mdi-target' },
-    { label: 'Contas', href: '#', icon: 'mdi-wallet-outline' },
-    { label: 'Usuarios', href: '/usuarios', icon: 'mdi-account-group-outline', active: page.url.startsWith('/usuarios') || page.url.startsWith('/minha-senha') },
+    { label: 'Dashboard', href: '/dashboard', icon: icons.homeOutline, active: page.url.startsWith('/dashboard') },
+    { label: 'Lançamentos', href: '/lancamentos', icon: icons.fileDocumentOutline, active: page.url.startsWith('/lancamentos') },
+    { label: 'Mensalidades', href: '/mensalidades', icon: icons.accountCashOutline, active: page.url.startsWith('/mensalidades') },
+    { label: 'Categorias', href: '/categorias', icon: icons.tagOutline, active: page.url.startsWith('/categorias') },
+    { label: 'Relatórios', href: '/relatorios', icon: icons.chartBar, active: page.url.startsWith('/relatorios') },
+    { label: 'Usuários', href: '/usuarios', icon: icons.accountGroupOutline, active: page.url.startsWith('/usuarios') || page.url.startsWith('/minha-senha') },
 ]);
 
 function logout() {
@@ -38,7 +37,7 @@ function logout() {
             <aside class="sidebar">
                 <div class="brand">
                     <div class="brand-icon">
-                        <v-icon icon="mdi-chart-box-outline" />
+                        <v-icon :icon="icons.chartBoxOutline" />
                     </div>
                     <strong>Gestao de Gastos</strong>
                 </div>
@@ -57,7 +56,7 @@ function logout() {
                 </nav>
 
                 <button class="logout-button" type="button" @click="logout">
-                    <v-icon icon="mdi-logout" size="22" />
+                    <v-icon :icon="icons.logout" size="22" />
                     <span>Sair</span>
                 </button>
             </aside>
@@ -66,11 +65,11 @@ function logout() {
                 <header class="topbar">
                     <div></div>
                     <div class="user-actions">
-                        <v-btn icon="mdi-bell-outline" variant="text" color="default" aria-label="Notificacoes" />
+                        <v-btn :icon="icons.bellOutline" variant="text" color="default" aria-label="Notificações" />
                         <div class="user-chip">
                             <div class="avatar">{{ initials }}</div>
                             <span>{{ user?.name }}</span>
-                            <v-icon icon="mdi-chevron-down" size="20" />
+                            <v-icon :icon="icons.chevronDown" size="20" />
                         </div>
                     </div>
                 </header>

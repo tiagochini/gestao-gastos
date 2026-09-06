@@ -1,4 +1,5 @@
 <script setup>
+import { icons } from '@/icons';
 import { Link } from '@inertiajs/vue3';
 import AppLayout from '@/Layouts/AppLayout.vue';
 
@@ -19,7 +20,7 @@ defineProps({
             </div>
             <Link href="/lancamentos" as="span">
                 <v-btn color="primary">
-                    <v-icon icon="mdi-plus" />
+                    <v-icon :icon="icons.plus" />
                     Novo lancamento
                 </v-btn>
             </Link>
@@ -29,7 +30,7 @@ defineProps({
             <article v-for="card in cards" :key="card.label" class="summary-card">
                 <div class="card-heading">
                     <span class="title-icon">
-                        <v-icon icon="mdi-calendar-range-outline" size="22" />
+                        <v-icon :icon="icons.calendarRangeOutline" size="22" />
                     </span>
                     <div>
                         <h2>{{ card.label }}</h2>

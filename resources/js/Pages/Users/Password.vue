@@ -1,4 +1,5 @@
 <script setup>
+import { icons } from '@/icons';
 import { Link, useForm, usePage } from '@inertiajs/vue3';
 import AppLayout from '@/Layouts/AppLayout.vue';
 
@@ -27,7 +28,7 @@ function submit() {
         <section class="panel user-panel">
             <div class="panel-title">
                 <span class="title-icon">
-                    <v-icon icon="mdi-lock-reset" size="22" />
+                    <v-icon :icon="icons.lockReset" size="22" />
                 </span>
                 <h2>Alterar senha</h2>
             </div>

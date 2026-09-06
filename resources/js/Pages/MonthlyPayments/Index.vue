@@ -1,4 +1,5 @@
 <script setup>
+import { icons } from '@/icons';
 import { router, useForm, usePage } from '@inertiajs/vue3';
 import AppLayout from '@/Layouts/AppLayout.vue';
 
@@ -103,7 +104,7 @@ function markAsPaid(payment) {
         <section class="forms-grid">
             <div class="panel">
                 <div class="panel-title">
-                    <span class="title-icon"><v-icon icon="mdi-account-plus-outline" size="22" /></span>
+                    <span class="title-icon"><v-icon :icon="icons.accountPlusOutline" size="22" /></span>
                     <h2>Novo membro</h2>
                 </div>
 
@@ -122,7 +123,7 @@ function markAsPaid(payment) {
                         :error-messages="memberForm.errors.monthly_amount"
                     />
                     <v-btn color="primary" type="submit" :loading="memberForm.processing">
-                        <v-icon icon="mdi-plus" />
+                        <v-icon :icon="icons.plus" />
                         Cadastrar
                     </v-btn>
                 </form>
@@ -130,7 +131,7 @@ function markAsPaid(payment) {
 
             <div class="panel">
                 <div class="panel-title">
-                    <span class="title-icon"><v-icon icon="mdi-cash-plus" size="22" /></span>
+                    <span class="title-icon"><v-icon :icon="icons.cashPlus" size="22" /></span>
                     <h2>Lancar mensalidade</h2>
                 </div>
 
@@ -161,7 +162,7 @@ function markAsPaid(payment) {
                     />
                     <v-text-field v-model="paymentForm.notes" label="Observacao" variant="outlined" hide-details="auto" :error-messages="paymentForm.errors.notes" />
                     <v-btn color="primary" type="submit" :loading="paymentForm.processing">
-                        <v-icon icon="mdi-plus" />
+                        <v-icon :icon="icons.plus" />
                         Registrar
                     </v-btn>
                 </form>
@@ -171,7 +172,7 @@ function markAsPaid(payment) {
         <section class="panel table-panel">
             <div class="table-header">
                 <div class="panel-title">
-                    <span class="title-icon"><v-icon icon="mdi-calendar-check-outline" size="22" /></span>
+                    <span class="title-icon"><v-icon :icon="icons.calendarCheckOutline" size="22" /></span>
                     <h2>Controle mensal</h2>
                 </div>
                 <form class="filter-form" @submit.prevent="applyFilters">

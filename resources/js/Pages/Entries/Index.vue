@@ -1,4 +1,5 @@
 <script setup>
+import { icons } from '@/icons';
 import { Link, router, useForm, usePage } from '@inertiajs/vue3';
 import AppLayout from '@/Layouts/AppLayout.vue';
 
@@ -103,7 +104,7 @@ function destroyEntry(entry) {
         <section class="panel new-entry-panel">
             <div class="panel-title">
                 <span class="title-icon">
-                    <v-icon icon="mdi-file-plus-outline" size="22" />
+                    <v-icon :icon="icons.filePlusOutline" size="22" />
                 </span>
                 <h2>Novo lancamento</h2>
             </div>
@@ -173,7 +174,7 @@ function destroyEntry(entry) {
                 </label>
 
                 <v-btn color="primary" size="large" class="add-button" type="submit" :loading="form.processing">
-                    <v-icon icon="mdi-plus" />
+                    <v-icon :icon="icons.plus" />
                     Adicionar
                 </v-btn>
             </form>
@@ -182,7 +183,7 @@ function destroyEntry(entry) {
         <section class="panel filter-panel">
             <div class="panel-title">
                 <span class="title-icon">
-                    <v-icon icon="mdi-filter-outline" size="22" />
+                    <v-icon :icon="icons.filterOutline" size="22" />
                 </span>
                 <h2>Filtros</h2>
             </div>
@@ -238,7 +239,7 @@ function destroyEntry(entry) {
         <section class="panel table-panel">
             <div class="panel-title table-title">
                 <span class="title-icon">
-                    <v-icon icon="mdi-format-list-bulleted" size="22" />
+                    <v-icon :icon="icons.formatListBulleted" size="22" />
                 </span>
                 <h2>Lancamentos</h2>
             </div>
@@ -258,7 +259,7 @@ function destroyEntry(entry) {
                         <tr v-if="entries.length === 0">
                             <td colspan="5" class="empty-cell">
                                 <div class="empty-state">
-                                    <v-icon icon="mdi-file-document-plus-outline" size="34" />
+                                    <v-icon :icon="icons.fileDocumentPlusOutline" size="34" />
                                     <strong>{{ hasFilters() ? 'Nenhum lancamento encontrado' : 'Nenhum lancamento cadastrado' }}</strong>
                                     <span>
                                         {{ hasFilters() ? 'Ajuste os filtros para ampliar a busca.' : 'Use o formulario acima para registrar a primeira receita ou despesa.' }}
@@ -270,7 +271,7 @@ function destroyEntry(entry) {
                             <td>{{ entry.date }}</td>
                             <td>
                                 <span class="category-tag" :class="categoryClass(entry.type)">
-                                    <v-icon :icon="entry.type === 'receita' ? 'mdi-trending-up' : 'mdi-trending-down'" size="16" />
+                                    <v-icon :icon="entry.type === 'receita' ? icons.trendingUp : icons.trendingDown" size="16" />
                                     {{ entry.category }}
                                 </span>
                             </td>
@@ -278,10 +279,10 @@ function destroyEntry(entry) {
                             <td class="amount" :class="entry.type">{{ entry.type === 'receita' ? '+' : '-' }} R$ {{ entry.amount }}</td>
                             <td class="actions-cell">
                                 <Link :href="`/lancamentos/${entry.id}/editar`" as="span">
-                                    <v-btn icon="mdi-pencil-outline" size="small" variant="text" aria-label="Editar" />
+                                    <v-btn :icon="icons.pencilOutline" size="small" variant="text" aria-label="Editar" />
                                 </Link>
                                 <v-btn
-                                    icon="mdi-trash-can-outline"
+                                    :icon="icons.trashCanOutline"
                                     size="small"
                                     variant="text"
                                     color="error"

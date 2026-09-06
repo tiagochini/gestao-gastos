@@ -1,4 +1,5 @@
 <script setup>
+import { icons } from '@/icons';
 import { Link, router, usePage } from '@inertiajs/vue3';
 import AppLayout from '@/Layouts/AppLayout.vue';
 
@@ -35,7 +36,7 @@ function deactivate(user) {
                 </Link>
                 <Link href="/usuarios/novo" as="span">
                     <v-btn color="primary">
-                        <v-icon icon="mdi-plus" />
+                        <v-icon :icon="icons.plus" />
                         Novo usuario
                     </v-btn>
                 </Link>
@@ -52,7 +53,7 @@ function deactivate(user) {
         <section class="panel table-panel">
             <div class="panel-title">
                 <span class="title-icon">
-                    <v-icon icon="mdi-account-group-outline" size="22" />
+                    <v-icon :icon="icons.accountGroupOutline" size="22" />
                 </span>
                 <h2>Usuarios cadastrados</h2>
             </div>
@@ -75,7 +76,7 @@ function deactivate(user) {
                         <tr v-if="users.length === 0">
                             <td colspan="4" class="empty-cell">
                                 <div class="empty-state">
-                                    <v-icon icon="mdi-account-plus-outline" size="34" />
+                                    <v-icon :icon="icons.accountPlusOutline" size="34" />
                                     <strong>Nenhum usuario cadastrado</strong>
                                     <span>Crie um usuario para permitir acesso ao sistema.</span>
                                 </div>
@@ -91,10 +92,10 @@ function deactivate(user) {
                             </td>
                             <td class="actions-cell">
                                 <Link :href="`/usuarios/${user.id}/editar`" as="span">
-                                    <v-btn icon="mdi-pencil-outline" size="small" variant="text" aria-label="Editar" />
+                                    <v-btn :icon="icons.pencilOutline" size="small" variant="text" aria-label="Editar" />
                                 </Link>
                                 <v-btn
-                                    icon="mdi-account-off-outline"
+                                    :icon="icons.accountOffOutline"
                                     size="small"
                                     variant="text"
                                     color="error"
