@@ -1,6 +1,9 @@
 import { createApp, h } from 'vue'
 import { createInertiaApp } from '@inertiajs/vue3'
+import { registerSW } from 'virtual:pwa-register'
 import vuetify from './vuetify';
+
+registerSW({ immediate: true })
 
 createInertiaApp({
     resolve: name => {
