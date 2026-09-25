@@ -14,7 +14,9 @@ export default defineConfig({
         vue(),
         vuetify({ autoImport: true }),
         VitePWA({
+            strategies: 'injectManifest',
             registerType: 'autoUpdate',
+            srcDir: 'resources/js',
             outDir: 'public',
             filename: 'sw.js',
             manifestFilename: 'manifest.webmanifest',
@@ -22,34 +24,13 @@ export default defineConfig({
             buildBase: '/',
             includeAssets: ['favicon.ico', 'pwa/icon.svg'],
             manifest: false,
-            workbox: {
-                navigateFallback: '/offline.html',
+            injectManifest: {
                 globPatterns: [
                     'build/**/*.{js,css,html,png,svg,woff,woff2}',
                     'pwa/*.{png,svg}',
                     'manifest.webmanifest',
                     'offline.html',
                     'favicon.ico',
-                ],
-                runtimeCaching: [
-                    {
-                        urlPattern: ({ request }) => request.destination === 'style' || request.destination === 'script',
-                        handler: 'StaleWhileRevalidate',
-                        options: {
-                            cacheName: 'static-assets',
-                        },
-                    },
-                    {
-                        urlPattern: ({ request }) => request.destination === 'image' || request.destination === 'font',
-                        handler: 'CacheFirst',
-                        options: {
-                            cacheName: 'media-assets',
-                            expiration: {
-                                maxEntries: 80,
-                                maxAgeSeconds: 60 * 60 * 24 * 30,
-                            },
-                        },
-                    },
                 ],
             },
         }),
