@@ -1,9 +1,10 @@
 <script setup>
 import { icons } from '@/icons';
 import { Link, router, usePage } from '@inertiajs/vue3';
-import { computed } from 'vue';
+import { computed, ref } from 'vue';
 
 const page = usePage();
+const mobileMenuOpen = ref(false);
 
 const user = computed(() => page.props.auth.user);
 const initials = computed(() => {
@@ -34,12 +35,15 @@ function logout() {
 <template>
     <v-app>
         <div class="app-shell">
-            <aside class="sidebar">
+            <aside class="sidebar" :class="{ 'mobile-open': mobileMenuOpen }">
                 <div class="brand">
                     <div class="brand-icon">
                         <v-icon :icon="icons.chartBoxOutline" />
                     </div>
                     <strong>Gestao de Gastos</strong>
+                    <button class="sidebar-close" type="button" aria-label="Fechar menu" @click="mobileMenuOpen = false">
+                        <v-icon :icon="icons.close" size="24" />
+                    </button>
                 </div>
 
                 <nav class="nav-list" aria-label="Principal">
@@ -49,6 +53,7 @@ function logout() {
                         :href="item.href"
                         class="nav-item"
                         :class="{ active: item.active }"
+                        @click="mobileMenuOpen = false"
                     >
                         <v-icon :icon="item.icon" size="22" />
                         <span>{{ item.label }}</span>
@@ -61,9 +66,28 @@ function logout() {
                 </button>
             </aside>
 
+            <button
+                v-if="mobileMenuOpen"
+                class="sidebar-backdrop"
+                type="button"
+                aria-label="Fechar menu"
+                @click="mobileMenuOpen = false"
+            ></button>
+
             <main class="main-area">
                 <header class="topbar">
-                    <div></div>
+                    <div class="mobile-header">
+                        <button
+                            class="menu-button"
+                            type="button"
+                            aria-label="Abrir menu"
+                            :aria-expanded="mobileMenuOpen"
+                            @click="mobileMenuOpen = true"
+                        >
+                            <v-icon :icon="icons.menu" size="25" />
+                        </button>
+                        <strong>Gestao de Gastos</strong>
+                    </div>
                     <div class="user-actions">
                         <v-btn :icon="icons.bellOutline" variant="text" color="default" aria-label="Notificações" />
                         <div class="user-chip">
@@ -191,23 +215,44 @@ function logout() {
     font-weight: 700;
 }
 
+.mobile-header,
+.sidebar-close,
+.sidebar-backdrop {
+    display: none;
+}
+
 @media (max-width: 900px) {
     .app-shell {
-        grid-template-columns: 1fr;
+        display: block;
+        min-width: 0;
     }
 
     .sidebar {
-        min-height: auto;
-        position: sticky;
+        position: fixed;
+        inset: 0 auto 0 0;
+        width: min(320px, 86vw);
+        min-width: 0;
+        min-height: 100dvh;
         top: 0;
-        z-index: 10;
-        padding: 14px 16px;
-        border-right: 0;
-        border-bottom: 1px solid #e5e7eb;
+        z-index: 30;
+        padding: 22px 18px 20px;
+        border-right: 1px solid #e5e7eb;
+        transform: translateX(-100%);
+        visibility: hidden;
+        pointer-events: none;
+        transition: transform 180ms ease;
+        overflow-y: auto;
+        box-shadow: 18px 0 36px rgba(15, 23, 42, 0.16);
+    }
+
+    .sidebar.mobile-open {
+        transform: translateX(0);
+        visibility: visible;
+        pointer-events: auto;
     }
 
     .brand {
-        padding: 0 0 12px;
+        padding: 0 4px 26px;
         font-size: 18px;
     }
 
@@ -217,42 +262,98 @@ function logout() {
     }
 
     .nav-list {
-        display: flex;
+        display: grid;
         gap: 8px;
-        overflow-x: auto;
-        padding-bottom: 4px;
-        scrollbar-width: thin;
     }
 
     .nav-item {
-        flex: 0 0 auto;
-        height: 44px;
-        padding: 0 12px;
-        font-size: 14px;
+        height: 52px;
+        padding: 0 14px;
+        font-size: 15px;
     }
 
     .logout-button {
-        position: absolute;
-        right: 12px;
-        top: 10px;
-        width: 44px;
-        height: 44px;
-        justify-content: center;
-        border-top: 0;
-        padding: 0;
+        position: static;
+        width: 100%;
+        height: 52px;
+        justify-content: flex-start;
+        border-top: 1px solid #e5e7eb;
+        padding: 0 14px;
     }
 
     .logout-button span {
-        display: none;
+        display: inline;
+    }
+
+    .sidebar-close {
+        width: 40px;
+        height: 40px;
+        margin-left: auto;
+        display: grid;
+        place-items: center;
+        border: 0;
+        border-radius: 6px;
+        color: #4b5563;
+        background: transparent;
+        cursor: pointer;
+    }
+
+    .sidebar-backdrop {
+        position: fixed;
+        inset: 0;
+        z-index: 20;
+        display: block;
+        width: 100%;
+        height: 100%;
+        border: 0;
+        background: rgba(15, 23, 42, 0.42);
+        cursor: pointer;
     }
 
     .main-area {
+        width: 100%;
+        min-width: 0;
         padding: 20px;
     }
 
     .topbar {
         min-height: 42px;
         margin-bottom: 14px;
+    }
+
+    .mobile-header {
+        min-width: 0;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+    }
+
+    .mobile-header strong {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    .menu-button {
+        width: 42px;
+        height: 42px;
+        flex: 0 0 auto;
+        display: grid;
+        place-items: center;
+        border: 1px solid #dbe3ee;
+        border-radius: 7px;
+        color: #155bd7;
+        background: #ffffff;
+        cursor: pointer;
+    }
+
+    .user-actions {
+        gap: 8px;
+    }
+
+    .user-chip span,
+    .user-chip > .v-icon {
+        display: none;
     }
 }
 

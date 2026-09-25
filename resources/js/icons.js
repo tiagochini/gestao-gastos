@@ -12,6 +12,7 @@ import cashPlusSvg from '@mdi/svg/svg/cash-plus.svg?raw';
 import chartBarSvg from '@mdi/svg/svg/chart-bar.svg?raw';
 import chartBoxOutlineSvg from '@mdi/svg/svg/chart-box-outline.svg?raw';
 import chevronDownSvg from '@mdi/svg/svg/chevron-down.svg?raw';
+import closeSvg from '@mdi/svg/svg/close.svg?raw';
 import eyeOffOutlineSvg from '@mdi/svg/svg/eye-off-outline.svg?raw';
 import eyeOutlineSvg from '@mdi/svg/svg/eye-outline.svg?raw';
 import fileDocumentOutlineSvg from '@mdi/svg/svg/file-document-outline.svg?raw';
@@ -22,6 +23,7 @@ import formatListBulletedSvg from '@mdi/svg/svg/format-list-bulleted.svg?raw';
 import homeOutlineSvg from '@mdi/svg/svg/home-outline.svg?raw';
 import lockResetSvg from '@mdi/svg/svg/lock-reset.svg?raw';
 import logoutSvg from '@mdi/svg/svg/logout.svg?raw';
+import menuSvg from '@mdi/svg/svg/menu.svg?raw';
 import pencilOutlineSvg from '@mdi/svg/svg/pencil-outline.svg?raw';
 import plusSvg from '@mdi/svg/svg/plus.svg?raw';
 import tagOutlineSvg from '@mdi/svg/svg/tag-outline.svg?raw';
@@ -51,6 +53,7 @@ export const icons = {
     chartBar: svgPath(chartBarSvg),
     chartBoxOutline: svgPath(chartBoxOutlineSvg),
     chevronDown: svgPath(chevronDownSvg),
+    close: svgPath(closeSvg),
     eyeOffOutline: svgPath(eyeOffOutlineSvg),
     eyeOutline: svgPath(eyeOutlineSvg),
     fileDocumentOutline: svgPath(fileDocumentOutlineSvg),
@@ -61,6 +64,7 @@ export const icons = {
     homeOutline: svgPath(homeOutlineSvg),
     lockReset: svgPath(lockResetSvg),
     logout: svgPath(logoutSvg),
+    menu: svgPath(menuSvg),
     pencilOutline: svgPath(pencilOutlineSvg),
     plus: svgPath(plusSvg),
     tagOutline: svgPath(tagOutlineSvg),
